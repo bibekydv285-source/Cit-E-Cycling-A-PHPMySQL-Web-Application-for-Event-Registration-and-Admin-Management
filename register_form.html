@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Interest Cit-E Cycling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1998c9 100%, #09acec 100%);
+        }
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .navbar { background-color: #0f3460; flex-shrink: 0; }
+
+        .form-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            overflow: hidden;
+        }
+
+        .form-card {
+            background: #fff;
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+            width: 100%;
+            max-width: 560px;
+            padding: 20px 28px;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .form-title h2 { color: #1a1a2e; font-size: 1.4rem; font-weight: 700; margin-bottom: 2px; }
+        .form-title p  { color: #888; font-size: 0.82rem; }
+
+        .section-divider {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #aab0c4;
+            border-bottom: 1px solid #e8eaf0; padding-bottom: 4px; margin-bottom: 10px;
+        }
+
+        .form-label { font-weight: 600; color: #1a1a2e; margin-bottom: 3px; font-size: 0.88rem; }
+
+        .form-control {
+            border: 2px solid #e0e4ed; border-radius: 8px;
+            padding: 8px 12px; font-size: 0.88rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-control:focus { border-color: #dc3545; box-shadow: 0 0 0 3px rgba(220,53,69,0.10); }
+        .form-control.is-invalid { border-color: #dc3545; }
+        .form-control.is-valid   { border-color: #198754; }
+
+        .mb-field { margin-bottom: 8px; }
+
+        /* Club dropdown */
+        .club-select-wrapper { position: relative; }
+        .club-select-wrapper::after {
+            content: '▾'; position: absolute; right: 12px; top: 50%;
+            transform: translateY(-50%); pointer-events: none; color: #6c757d; font-size: 0.9rem;
+        }
+        #club_id {
+            appearance: none; -webkit-appearance: none;
+            border: 2px solid #e0e4ed; border-radius: 8px;
+            padding: 8px 36px 8px 12px; font-size: 0.88rem;
+            color: #333; background-color: #fff; cursor: pointer;
+            transition: border-color 0.2s; width: 100%;
+        }
+        #club_id:focus { border-color: #dc3545; box-shadow: 0 0 0 3px rgba(220,53,69,0.10); outline: none; }
+
+        /* Club badge */
+        .club-badge {
+            display: none; align-items: center; gap: 8px; margin-top: 5px;
+            padding: 6px 10px; border-radius: 8px; background: #f8f9fc;
+            border: 1px solid #e0e4ed; font-size: 0.8rem; color: #555;
+        }
+        .club-badge.visible { display: flex; }
+        .club-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+        /* Terms */
+        .terms-box {
+            background: #f8f9fc; border: 1px solid #e0e4ed;
+            border-radius: 8px; padding: 10px 12px;
+        }
+        .form-check-input:checked { background-color: #dc3545; border-color: #dc3545; }
+        .form-check-label { font-size: 0.82rem; }
+
+        /* Submit */
+        .btn-submit {
+            background-color: #dc3545; border: none; border-radius: 8px;
+            padding: 10px; font-size: 0.95rem; font-weight: 600;
+            color: white; width: 100%; transition: background-color 0.2s, transform 0.15s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { background-color: #c82333; transform: translateY(-1px); color: white; }
+
+        .req { color: #dc3545; }
+        .form-text { font-size: 0.75rem; }
+        .invalid-feedback { font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🚴 Cit-E Cycling</a>
+            <a href="index.html" class="btn btn-outline-light btn-sm">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="form-area">
+        <div class="form-card">
+
+            <div class="form-title">
+                <h2>Register Your Interest</h2>
+                <p>Fill in your details and we'll notify you about future events.</p>
+            </div>
+
+            <form action="register.php" method="POST" novalidate id="registerForm">
+
+                <p class="section-divider">Personal Details</p>
+
+                <div class="row g-2 mb-field">
+                    <div class="col-6">
+                        <label for="firstname" class="form-label">First Name <span class="req">*</span></label>
+                        <input type="text" class="form-control" id="firstname" name="firstname"
+                               placeholder="e.g. Bibek" required autocomplete="given-name">
+                        <div class="invalid-feedback">Required.</div>
+                    </div>
+                    <div class="col-6">
+                        <label for="surname" class="form-label">Surname <span class="req">*</span></label>
+                        <input type="text" class="form-control" id="surname" name="surname"
+                               placeholder="e.g. yadav" required autocomplete="family-name">
+                        <div class="invalid-feedback">Required.</div>
+                    </div>
+                </div>
+
+                <div class="mb-field">
+                    <label for="email" class="form-label">Email Address <span class="req">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="e.g. Bibekydv51@Gmail.com" required autocomplete="email">
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+
+                <p class="section-divider mt-2">Club Preference</p>
+
+                <div class="mb-field">
+                    <label for="club_id" class="form-label">
+                        Preferred Club <span class="text-muted fw-normal" style="font-size:0.78rem;">(optional)</span>
+                    </label>
+                    <div class="club-select-wrapper">
+                        <select id="club_id" name="club_id">
+                            <option value="">🚫 No club  I'll decide later</option>
+                            <option value="1">🔴 Roker Rollers Sunderland</option>
+                            <option value="2">🔵 Byker Bikers Newcastle</option>
+                            <option value="3">🟡 Middlesbrough Movers Middlesbrough</option>
+                            <option value="4">🟢 Durham Dynamos Durham</option>
+                        </select>
+                    </div>
+                    <div class="club-badge" id="clubBadge">
+                        <span class="club-dot" id="clubDot"></span>
+                        <span id="clubBadgeText"></span>
+                    </div>
+                </div>
+
+                <p class="section-divider mt-2">Terms &amp; Conditions</p>
+
+                <div class="mb-field terms-box">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms"
+                               name="terms" value="yes" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#" class="text-danger fw-semibold">Terms &amp; Conditions</a>
+                            and consent to being contacted about Cit-E Cycling events.
+                            <span class="req">*</span>
+                        </label>
+                        <div class="invalid-feedback">You must accept the terms to continue.</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-submit">🚴 Register My Interest</button>
+
+                <p class="text-muted text-center mt-2 mb-0" style="font-size:0.75rem;">
+                    <span class="req">*</span> Required &nbsp;·&nbsp; We never share your data with third parties.
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const select    = document.getElementById('club_id');
+    const badge     = document.getElementById('clubBadge');
+    const badgeText = document.getElementById('clubBadgeText');
+    const badgeDot  = document.getElementById('clubDot');
+
+    const clubInfo = {
+        '1': { color: '#e94560', label: 'Roker Rollers',        loc: 'Sunderland'    },
+        '2': { color: '#1e88e5', label: 'Byker Bikers',         loc: 'Newcastle'     },
+        '3': { color: '#f9a825', label: 'Middlesbrough Movers', loc: 'Middlesbrough' },
+        '4': { color: '#43a047', label: 'Durham Dynamos',       loc: 'Durham'        },
+    };
+
+    select.addEventListener('change', function () {
+        const val = this.value;
+        if (val && clubInfo[val]) {
+            const info = clubInfo[val];
+            badgeDot.style.backgroundColor = info.color;
+            badgeText.textContent = '📍 ' + info.label + ' · ' + info.loc;
+            badge.classList.add('visible');
+        } else {
+            badge.classList.remove('visible');
+        }
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        if (!this.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        this.classList.add('was-validated');
+    });
+</script>
+</body>
+</html>

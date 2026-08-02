@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cit-E Cycling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style> 
+           /* BASIC PAGE SETUP */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background-color: #f0f4f8;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+           /* /* NAVBAR (top bar) */
+        .navbar {
+            background-color: #0f3460;
+        }
+         /* HERO (big banner section) */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            flex-shrink: 0;
+            padding: 36px 0;
+        }
+
+        /* Red colour for "Cit-E Cycling" text */
+        .brand-accent {
+            color: #e94560;
+        }
+        /* CARDS SECTION (middle area) */
+        .cards-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+           /* CARD 1 - "Register Your Interest"
+           Hover: lifts up + pink glow + light pink background */
+
+        /* Normal state */
+        .card-register {
+            border-radius: 12px;
+            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+        }
+
+        /* Hover state */
+        .card-register:hover {
+            transform: translateY(-6px);                                    
+            box-shadow: 0 12px 30px rgba(233, 69, 96, 0.25) !important;    
+            background-color: #c77f5d !important;                           
+        }
+
+        /* Button inside card - normal state */
+        .btn-register {
+            transition: background-color 0.25s, border-color 0.25s;
+        }
+
+        /* Button inside card - when card is hovered */
+        .card-register:hover .btn-register {
+            background-color: #c73251;   /* darker red */
+            border-color: #c73251;
+        }
+/* 
+    CARD 2 - "Admin Login"
+           Hover: lifts up + navy glow + dark navy background */
+
+        /* Normal state */
+        .card-admin {
+            border-radius: 12px;
+            transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+        }
+
+        /* Hover state */
+        .card-admin:hover {
+            transform: translateY(-6px);                                     
+            box-shadow: 0 12px 30px rgba(15, 52, 96, 0.35) !important;      
+            background-color: #18663e !important;                            
+        }
+
+        /* Card title - change to white when hovered */
+        .card-admin:hover .card-title {
+            color: #ffffff;
+        }
+
+        /* Card text - change to light white when hovered */
+        .card-admin:hover .card-text {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        /* Button inside card - normal state */
+        .btn-admin {
+            transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+        }
+
+        /* Button inside card - when card is hovered */
+        .card-admin:hover .btn-admin {
+            background-color: #e94560;   /* red button */
+            border-color: #e94560;
+            color: #ffffff;
+        }
+
+        /* Smooth transition for title and text colour change */
+        .card-title, .card-text {
+            transition: color 0.25s;
+        }
+         /* FOOTER (bottom bar) */
+
+        footer {
+            background-color: #0f3460;
+            color: white;
+            flex-shrink: 0;
+            padding: 20px 0 16px;
+        }
+
+        .footer-stats {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .stat-item {
+            padding: 14px 0;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #e94560;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.65;
+            margin-top: 3px;
+        }
+
+        .footer-stats .col:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
+        </div>
+    </nav>
+
+
+    <!-- ===== HERO BANNER ===== -->
+    <div class="hero text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-2">
+                Welcome to <span class="brand-accent">Cit-E Cycling</span>
+            </h1>
+            <p class="lead mb-0">
+                The UK's premier urban cycling competition. Compete, track your performance, and ride to the top.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ===== CARDS SECTION ===== -->
+    <div class="cards-section">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+
+                <!-- CARD 1: Register Your Interest -->
+                <div class="col-md-5">
+                    <div class="card card-register h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="display-5 mb-3">📋</div>
+                            <h4 class="card-title fw-bold">Register Your Interest</h4>
+                            <p class="card-text text-muted">
+                                Sign up to hear about future Cit-E Cycling events in your city.
+                            </p>
+                            <a href="register_form.html" class="btn btn-danger px-4 btn-register">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Admin Login -->
+                <div class="col-md-5">
+                    <div class="card card-admin h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="display-5 mb-3">🔒</div>
+                            <h4 class="card-title fw-bold">Admin Login</h4>
+                            <p class="card-text text-muted">
+                                Event staff can log in to manage participants, scores, and results.
+                            </p>
+                            <a href="admin_login.html" class="btn btn-dark px-4 btn-admin">Admin Login</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="row g-0 footer-stats">
+                <div class="col stat-item">
+                    <div class="stat-num">30+</div>
+                    <div class="stat-label">Participants</div>
+                </div>
+                <div class="col stat-item">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Clubs</div>
+                </div>
+                <div class="col stat-item">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Cities</div>
+                </div>
+            </div>
+            <p class="text-center mb-0 text-white">
+                <small>&copy; 2026 Cit-E Cycling. All rights reserved.</small>
+            </p>
+        </div>
+    </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
