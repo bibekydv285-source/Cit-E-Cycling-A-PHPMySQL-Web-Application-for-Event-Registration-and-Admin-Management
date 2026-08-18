@@ -20,8 +20,8 @@ include 'dbconnect.php';
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="admin_menu.php" class="btn btn-outline-light btn-sm">← Admin Menu</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/admin-menu" class="btn btn-outline-light btn-sm">← Admin Menu</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -68,8 +68,8 @@ try {
                                 <td><?= htmlspecialchars($p['power_output']) ?></td>
                                 <td><?= htmlspecialchars($p['distance']) ?></td>
                                 <td class="text-center">
-                                    <a href="edit_participant.php?id=<?= $p['id'] ?>" title="Edit" class="btn btn-sm btn-warning me-1">✏️</a>
-                                    <a href="delete.php?id=<?= $p['id'] ?>&name=<?= urlencode($p['firstname'] . ' ' . $p['surname']) ?>" title="Delete" class="btn btn-sm btn-danger">🗑️ </a>
+                                    <a href="/edit-participant?id=<?= $p['id'] ?>" title="Edit" class="btn btn-sm btn-warning me-1">✏️</a>
+                                    <a href="/delete?id=<?= $p['id'] ?>&name=<?= urlencode($p['firstname'] . ' ' . $p['surname']) ?>" title="Delete" class="btn btn-sm btn-danger">🗑️ </a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

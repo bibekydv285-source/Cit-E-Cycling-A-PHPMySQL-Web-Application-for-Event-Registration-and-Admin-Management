@@ -83,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="admin_menu.php" class="btn btn-outline-light btn-sm">← Admin Menu</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/admin-menu" class="btn btn-outline-light btn-sm">← Admin Menu</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -249,7 +249,7 @@ try {
                        <strong id="modalPersonName"></strong>? This cannot be undone.</p>
                 </div>
                 <div class="modal-footer border-0">
-                    <form method="POST" action="view_registrations.php">
+                    <form method="POST" action="/view-registrations">
                         <input type="hidden" name="delete_id" id="modalDeleteId">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-danger">🗑️ Yes, Delete</button>

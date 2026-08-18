@@ -3,7 +3,7 @@
         <h4 class="fw-bold mb-1">Edit Participant Scores</h4>
         <p class="text-muted mb-4">Only power output and distance can be updated.</p>
 
-        <form action="edit_participant.php" method="POST" novalidate id="editForm">
+        <form action="/edit-participant" method="POST" novalidate id="editForm">
             <div class="mb-3">
                 <label class="form-label fw-semibold">First Name</label>
                 <input type="text" class="form-control bg-light" name="firstname" disabled value="<?= htmlspecialchars($participant['firstname']) ?>">
@@ -30,7 +30,7 @@
 
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-warning fw-semibold">💾 Save Changes</button>
-                <a href="view_participants_edit_delete.php" class="btn btn-outline-secondary">Cancel</a>
+                <a href="/view-participants-edit-delete" class="btn btn-outline-secondary">Cancel</a>
             </div>
         </form>
     </div>

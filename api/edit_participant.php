@@ -20,8 +20,8 @@ include 'dbconnect.php';
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="view_participants_edit_delete.php" class="btn btn-outline-light btn-sm">← Back to Participants</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/view-participants-edit-delete" class="btn btn-outline-light btn-sm">← Back to Participants</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -66,8 +66,8 @@ try {
             echo '<div class="display-4 mb-3">✅</div>';
             echo '<h2 class="fw-bold">Scores Updated!</h2>';
             echo '<p class="text-muted">The participant\'s scores have been saved successfully.</p>';
-            echo '<a href="view_participants_edit_delete.php" class="btn btn-dark me-2">← View All Participants</a>';
-            echo '<a href="edit_participant.php?id=' . $id . '" class="btn btn-warning">Edit Again</a>';
+            echo '<a href="/view-participants-edit-delete" class="btn btn-dark me-2">← View All Participants</a>';
+            echo '<a href="/edit-participant?id=' . $id . '" class="btn btn-warning">Edit Again</a>';
             echo '</div></div>';
         }
     } else {
@@ -75,7 +75,7 @@ try {
         $id = (int)($_GET['id'] ?? 0);
         if ($id <= 0) {
             echo '<div class="alert alert-danger">No participant specified.</div>';
-            echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+            echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
         } else {
             $stmt = $conn->prepare("SELECT * FROM participant WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -84,7 +84,7 @@ try {
 
             if (!$participant) {
                 echo '<div class="alert alert-warning">Participant not found.</div>';
-                echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+                echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
             } else {
                 include 'edit_participant_form.php';
             }

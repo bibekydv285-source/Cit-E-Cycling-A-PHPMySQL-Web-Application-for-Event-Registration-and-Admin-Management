@@ -20,8 +20,8 @@ include 'dbconnect.php';
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="view_participants_edit_delete.php" class="btn btn-outline-light btn-sm">← Back to Participants</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/view-participants-edit-delete" class="btn btn-outline-light btn-sm">← Back to Participants</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -42,10 +42,10 @@ try {
 
         if ($confirm !== 'yes') {
             echo '<div class="alert alert-warning">Deletion was not confirmed. No changes were made.</div>';
-            echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back to Participants</a>';
+            echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back to Participants</a>';
         } elseif ($id <= 0) {
             echo '<div class="alert alert-danger">Invalid participant ID.</div>';
-            echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+            echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
         } else {
             // Verify participant exists first
             $check = $conn->prepare("SELECT firstname, surname FROM participant WHERE id = :id");
@@ -55,7 +55,7 @@ try {
 
             if (!$exists) {
                 echo '<div class="alert alert-warning">Participant not found – they may have already been deleted.</div>';
-                echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+                echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
             } else {
                 $stmt = $conn->prepare("DELETE FROM participant WHERE id = :id");
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -64,7 +64,7 @@ try {
                 echo '<div class="display-4 mb-3">🗑️</div>';
                 echo '<h2 class="fw-bold">Participant Deleted Successfully!</h2>';
                 echo '<p class="text-muted"><strong>' . htmlspecialchars($exists['firstname'] . ' ' . $exists['surname']) . '</strong> has been removed from the system.</p>';
-                echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← View All Participants</a>';
+                echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← View All Participants</a>';
                 echo '</div></div>';
             }
         }
@@ -76,7 +76,7 @@ try {
 
         if ($id <= 0) {
             echo '<div class="alert alert-danger">No participant specified.</div>';
-            echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+            echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
         } else {
             // Fetch participant to confirm they exist and show details
             $stmt = $conn->prepare("SELECT p.*, c.name AS club_name FROM participant p LEFT JOIN club c ON p.club_id = c.id WHERE p.id = :id");
@@ -86,7 +86,7 @@ try {
 
             if (!$p) {
                 echo '<div class="alert alert-warning">Participant not found.</div>';
-                echo '<a href="view_participants_edit_delete.php" class="btn btn-dark">← Back</a>';
+                echo '<a href="/view-participants-edit-delete" class="btn btn-dark">← Back</a>';
             } else {
 ?>
                 <div class="card border-0 shadow-sm border-danger" style="border-top: 4px solid #dc3545 !important;">
@@ -105,12 +105,12 @@ try {
                                 <tr class="mb-0"><th>Distance</th><td><?= htmlspecialchars($p['distance']) ?> km</td></tr>
                             </table>
                         </div>
-                        <form action="delete.php" method="POST">
+                        <form action="/delete" method="POST">
                             <input type="hidden" name="id" value="<?= $p['id'] ?>">
                             <input type="hidden" name="confirm" value="yes">
                             <div class="d-flex gap-2 justify-content-center">
                                 <button type="submit" class="btn btn-danger px-4">🗑️ Yes, Delete Permanently</button>
-                                <a href="view_participants_edit_delete.php" class="btn btn-outline-secondary px-4">Cancel</a>
+                                <a href="/view-participants-edit-delete" class="btn btn-outline-secondary px-4">Cancel</a>
                             </div>
                         </form>
                     </div>

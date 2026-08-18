@@ -3,5 +3,18 @@
     "api/**/*.php": {
       "runtime": "vercel-php@0.7.3"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/register", "destination": "/api/register.php" },
+    { "source": "/login", "destination": "/api/login.php" },
+    { "source": "/logout", "destination": "/api/logout.php" },
+    { "source": "/delete", "destination": "/api/delete.php" },
+    { "source": "/edit-participant-form", "destination": "/api/edit_participant_form.php" },
+    { "source": "/edit-participant", "destination": "/api/edit_participant.php" },
+    { "source": "/admin-menu", "destination": "/api/admin_menu.php" },
+    { "source": "/search-form", "destination": "/api/search_form.php" },
+    { "source": "/search-result", "destination": "/api/search_result.php" },
+    { "source": "/view-participants-edit-delete", "destination": "/api/view_participants_edit_delete.php" },
+    { "source": "/view-registrations", "destination": "/api/view_registrations.php" }
+  ]
 }

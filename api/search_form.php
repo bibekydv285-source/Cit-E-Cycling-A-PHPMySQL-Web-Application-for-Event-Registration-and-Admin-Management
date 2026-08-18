@@ -19,8 +19,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="admin_menu.php" class="btn btn-outline-light btn-sm">← Admin Menu</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/admin-menu" class="btn btn-outline-light btn-sm">← Admin Menu</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -34,7 +34,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-1">🔍 Search Participant</h5>
                         <p class="text-muted small mb-3">Search by first name or surname.</p>
-                        <form action="search_result.php" method="POST" novalidate id="participantForm">
+                        <form action="/search-result" method="POST" novalidate id="participantForm">
                             <div class="mb-3">
                                 <label for="firstname" class="form-label fw-semibold">First Name or Surname</label>
                                 <input type="text" class="form-control" id="firstname" name="firstname" placeholder="e.g. Bibek" required>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-1">🏆 Search Club</h5>
                         <p class="text-muted small mb-3">Search by club name to see all members and stats.</p>
-                        <form action="search_result.php" method="POST" novalidate id="clubForm">
+                        <form action="/search-result" method="POST" novalidate id="clubForm">
                             <div class="mb-3">
                                 <label for="club" class="form-label fw-semibold">Club Name</label>
                                 <input type="text" class="form-control" id="club" name="club" placeholder="e.g. Roker Rollers" required>

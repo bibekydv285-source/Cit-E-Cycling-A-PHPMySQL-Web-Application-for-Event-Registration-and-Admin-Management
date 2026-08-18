@@ -20,8 +20,8 @@ include 'dbconnect.php';
         <div class="container">
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex gap-2">
-                <a href="search_form.php" class="btn btn-outline-light btn-sm">← New Search</a>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/search-form" class="btn btn-outline-light btn-sm">← New Search</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -38,7 +38,7 @@ try {
 
         if (empty($searchTerm)) {
             echo '<div class="alert alert-warning">Please enter a name to search.</div>';
-            echo '<a href="search_form.php" class="btn btn-dark">← Back to Search</a>';
+            echo '<a href="/search-form" class="btn btn-dark">← Back to Search</a>';
         } else {
             $like = '%' . $searchTerm . '%';
             $stmt = $conn->prepare("
@@ -58,7 +58,7 @@ try {
 
 <?php if (empty($results)): ?>
         <div class="alert alert-info">No participants found matching "<?= htmlspecialchars($searchTerm) ?>".</div>
-        <a href="search_form.php" class="btn btn-dark">← Try Another Search</a>
+        <a href="/search-form" class="btn btn-dark">← Try Another Search</a>
 <?php else: ?>
         <div class="row g-3">
             <?php foreach ($results as $p): ?>
@@ -79,7 +79,7 @@ try {
             <?php endforeach; ?>
         </div>
         <p class="text-muted small mt-3"><?= count($results) ?> result(s) found.</p>
-        <a href="search_form.php" class="btn btn-dark mt-2">← New Search</a>
+        <a href="/search-form" class="btn btn-dark mt-2">← New Search</a>
 <?php endif; ?>
 
 <?php
@@ -91,7 +91,7 @@ try {
 
         if (empty($searchTerm)) {
             echo '<div class="alert alert-warning">Please enter a club name to search.</div>';
-            echo '<a href="search_form.php" class="btn btn-dark">← Back to Search</a>';
+            echo '<a href="/search-form" class="btn btn-dark">← Back to Search</a>';
         } else {
             $like = '%' . $searchTerm . '%';
 
@@ -106,7 +106,7 @@ try {
 
 <?php if (empty($clubs)): ?>
         <div class="alert alert-info">No clubs found matching "<?= htmlspecialchars($searchTerm) ?>".</div>
-        <a href="search_form.php" class="btn btn-dark">← Try Another Search</a>
+        <a href="/search-form" class="btn btn-dark">← Try Another Search</a>
 <?php else:
             foreach ($clubs as $club):
                 // Get all participants + aggregates for this club
@@ -199,12 +199,12 @@ try {
         </div>
 <?php
             endforeach;
-            echo '<a href="search_form.php" class="btn btn-dark">← New Search</a>';
+            echo '<a href="/search-form" class="btn btn-dark">← New Search</a>';
         endif;
         }
 
     } else {
-        echo '<div class="alert alert-warning">Invalid request. <a href="search_form.php" class="alert-link">Go to Search</a></div>';
+        echo '<div class="alert alert-warning">Invalid request. <a href="/search-form" class="alert-link">Go to Search</a></div>';
     }
 
 } catch (PDOException $e) {
