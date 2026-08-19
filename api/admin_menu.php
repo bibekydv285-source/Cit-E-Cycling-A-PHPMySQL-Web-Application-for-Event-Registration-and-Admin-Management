@@ -74,7 +74,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
             <a class="navbar-brand fw-bold" href=".">🚴 Cit-E Cycling</a>
             <div class="d-flex align-items-center gap-3">
                 <span class="text-white-50 small">Welcome, <strong class="text-white"><?= htmlspecialchars($_SESSION['admin_username']) ?></strong></span>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
             </div>
         </div>
     </nav>
@@ -87,7 +87,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
             <!-- Search — Blue -->
             <div class="col-md-4 col-sm-6">
-                <a href="search_form.php" class="text-decoration-none">
+                <a href="/search-form" class="text-decoration-none">
                     <div class="card card-hover accent-blue border-0 shadow-sm h-100">
                         <div class="card-body text-center p-4">
                             <div class="icon-circle icon-blue">🔍</div>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
             <!-- View / Edit / Delete — Green -->
             <div class="col-md-4 col-sm-6">
-                <a href="view_participants_edit_delete.php" class="text-decoration-none">
+                <a href="/view-participants-edit-delete" class="text-decoration-none">
                     <div class="card card-hover accent-green border-0 shadow-sm h-100">
                         <div class="card-body text-center p-4">
                             <div class="icon-circle icon-green">📋</div>
@@ -113,7 +113,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
             <!-- Registrations — Purple -->
             <div class="col-md-4 col-sm-6">
-                <a href="view_registrations.php" class="text-decoration-none">
+                <a href="/view-registrations" class="text-decoration-none">
                     <div class="card card-hover accent-purple border-0 shadow-sm h-100">
                         <div class="card-body text-center p-4">
                             <div class="icon-circle icon-purple">📬</div>
@@ -126,7 +126,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
             <!-- Logout — Red -->
             <div class="col-md-4 col-sm-6">
-                <a href="logout.php" class="text-decoration-none">
+                <a href="/logout" class="text-decoration-none">
                     <div class="card card-hover accent-red border-0 shadow-sm h-100">
                         <div class="card-body text-center p-4">
                             <div class="icon-circle icon-red">🚪</div>
